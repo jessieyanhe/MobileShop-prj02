@@ -1,5 +1,7 @@
 package com.huatec.edu.mobileshop.common;
 
+import com.huatec.edu.mobileshop.R;
+
 public class Constants {
     /**
      * 广告显示时长 ，单位：ms
@@ -12,7 +14,8 @@ public class Constants {
     /**
      * 广告url
      */
-    public static String AD_URL = BASE_URL + "";
+    //public static String AD_URL = BASE_URL + "";
+    public static String AD_URL = "drawable://"+ R.drawable.sample_ad ;
     public static String API_KEY_FOR_MOB_SMS = "182489edf1060";
     public static String API_SECRET_FOR_MOB_SMS = "5955939eb23eb90c2baa227f87de43a0";
 

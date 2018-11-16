@@ -28,6 +28,11 @@
         android:layout_marginBottom="5dip"
         android:layout_marginRight="5dip"
         android:layout_marginTop="5dip"
-        android:background="@drawable/button_c"/>
+        android:background="@drawable/button_c"
+        android:gravity="center"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip"
+        android:textSize="12.0sp"
+        android:text="跳过"/>
 
 </FrameLayout>

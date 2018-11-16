@@ -18,7 +18,7 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 public class HttpMethods {
-    protected static final String BASE_URL = "http://192.168.8.8:8080/MobileShop";
+    protected static final String BASE_URL = "http://192.168.8.8:8080/MobileShop/";
     private static final int DEFAULT_TIMEOUT = 5;
     protected static final String TAG = "HttpMethods";
     protected Retrofit retrofit;

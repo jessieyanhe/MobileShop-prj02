@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,7 +39,8 @@ public class AdActivity extends AppCompatActivity {
 
     //加载广告
     private void loadAd(String url) {
-        ImageLoader.getInstance().displayImage(url, adImage, ImageLoaderManager.product_options, new
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage(url, adImage, ImageLoaderManager.product_options, new
                 ImageLoadingListener() {
                     @Override
                     public void onLoadingStarted(String imageUri, View view) {
@@ -46,6 +48,7 @@ public class AdActivity extends AppCompatActivity {
 
                     @Override
                     public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                        Log.e("AdActivity","onLoadingFailed");
                         skip();
                     }
 
@@ -64,7 +67,7 @@ public class AdActivity extends AppCompatActivity {
 
     //过3秒后跳转
     private void timer() {
-        final Handler handler = new Handler() {
+         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);

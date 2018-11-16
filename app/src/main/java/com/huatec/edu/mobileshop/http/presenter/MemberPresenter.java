@@ -10,7 +10,7 @@ public class MemberPresenter extends HttpMethods {
 
     public static  void register(Subscriber<MemberEntity> subscriber,String username,String email,String passward){
         Observable observable = memberService.register(username,passward,email)
-                .map()
+                .map(new HttpResultFunc<MemberEntity>());
     }
 
     public static void login(Subscriber<MemberEntity> subscriber,String username,String passward){

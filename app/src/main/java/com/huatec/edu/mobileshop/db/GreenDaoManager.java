@@ -1,5 +1,7 @@
 package com.huatec.edu.mobileshop.db;
 
+import android.database.sqlite.SQLiteDatabase;
+
 import com.huatec.edu.mobileshop.common.MyApplication;
 import com.huatec.edu.mobileshop.gen.DaoMaster;
 import com.huatec.edu.mobileshop.gen.DaoSession;
@@ -14,7 +16,8 @@ public class GreenDaoManager {
         if(mInstance == null){
             DaoMaster.DevOpenHelper devOpenHelper = new
                     DaoMaster.DevOpenHelper(MyApplication.getContext(),"mydb",null);
-            mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
+            SQLiteDatabase database = devOpenHelper.getWritableDatabase();
+            mDaoMaster = new DaoMaster(database);
             mDaoSession = mDaoMaster.newSession();
         }
     }

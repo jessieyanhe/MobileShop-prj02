@@ -52,7 +52,6 @@ public class ImageLoaderManager {
                 .imageDownloader(new BaseImageDownloader(context))
                 .defaultDisplayImageOptions(DisplayImageOptions.createSimple()).writeDebugLogs()
                 .build();
-
         return config;
     }
 
@@ -82,11 +81,12 @@ public class ImageLoaderManager {
             .cacheInMemory(false) // default  设置下载的图片是否缓存在内存中
             .cacheOnDisk(false) // default  设置下载的图片是否缓存在SD卡中
             .considerExifParams(false) // default
-            .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2) // default 设置图片以如何的编码方式显示
+            .imageScaleType(ImageScaleType.EXACTLY_STRETCHED) // default 设置图片以如何的编码方式显示
             .bitmapConfig(Bitmap.Config.ARGB_8888) // default 设置图片的解码类型
-            .displayer(new SimpleBitmapDisplayer()) // default  还可以设置圆角图片new RoundedBitmapDisplayer(20)
+            //.displayer(new SimpleBitmapDisplayer()) // default  还可以设置圆角图片new RoundedBitmapDisplayer(20)
             .handler(new Handler()) // default
             .build();
+
     public static DisplayImageOptions user_options = new DisplayImageOptions.Builder()
             .showImageOnLoading(R.drawable.image_loading) // 设置图片下载期间显示的图片
             .showImageForEmptyUri(R.drawable.face_default) // 设置图片Uri为空或是错误的时候显示的图片
