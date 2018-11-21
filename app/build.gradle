@@ -1,12 +1,17 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'android-apt'
 
-greendao{
+greendao {
     schemaVersion 1
     daoPackage 'com.huatec.edu.mobileshop.gen'
     targetGenDir 'src/main/java'
 }
-
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -24,6 +29,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        google {}
+        anzhi {}
+        qh360 {}
+        tencent {}
+        wandoujia {}
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
 }
 
 dependencies {
@@ -31,6 +48,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile files('libs/MobCommons-2018.1011.1129.jar')
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
@@ -48,4 +66,11 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     //UIL
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    //注解
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //Mob SMS
+    compile name:'SMSSDK-3.2.1'
+    //compile name:'SMSSDK-2.1.2',ext:'aar'
+   // compile name:'SMSSDKGUI-2.1.2',ext:'aar'
 }
